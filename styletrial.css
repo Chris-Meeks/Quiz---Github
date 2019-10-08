@@ -1,0 +1,134 @@
+﻿body
+{
+background:#4D6A6D;
+}
+#optionpage{
+	margin-top:90px;
+}
+
+.grid-container {
+  display: grid;
+  grid-gap: 10px;
+  background-color: #798478;
+  padding: 10px;
+  width:80%;
+  align:middle;
+  margin:auto;
+  border-radius:9px;
+  margin-bottom:5px;
+  border:solid 1px;
+  font-family:"Lucida Console";
+  
+}
+
+.grid-item {
+  background-color: #C9ADA1;
+  text-align: center;
+  padding: 20px;
+  margin-top:4px;
+  margin-bottom:4px;
+  font-size: 30px;
+  border-radius:6px;
+   text-align: center;
+}
+
+
+#options {
+	
+}
+
+
+.item1{
+grid-row:1;
+ text-align: center;
+}
+
+.item2{
+grid-row:1;
+}
+.item3{
+grid-row:1;
+}
+.item4{
+grid-row:2;
+}
+.item5{
+grid-row:2;
+}
+.item6{
+grid-row:2;
+}
+
+#questioncontainer{
+	display:None;
+	margin-top:50px;
+	
+	
+	}
+#answers{
+	display:None
+}
+
+#next{
+	display:None
+}
+
+.item8{
+grid-row:1;
+grid-column:1
+}
+.item9{
+grid-row:1;
+grid-column:2
+}
+.item10{
+grid-row:2;
+grid-column:1
+}
+.item11{
+grid-row:2;
+grid-column:2
+}
+
+
+
+.cat{
+	margin-top:5px;
+}
+
+#scores{
+	display:None;
+}
+
+#scorekeeper{
+	display:None;
+}
+
+.scores-container {
+  display: grid;
+  grid-template-columns:100px 100px 100px 100px 100px 100px 100px 100px 100px 100px;
+  background-color: #798478;
+  
+  min-width:1000px;
+  max-width:1000px;
+  align:middle;
+  margin:auto;
+  border-radius:5px;
+ 
+  
+}
+
+.scores-grid-item {
+  background-color: #C9ADA1;
+  text-align: center;
+  margin:auto;
+  margin-bottom:13px;
+  margin-top:13px;
+  font-size: 30px;
+  border-radius:5px;
+  width:75px;
+  
+  height:30px;
+  align:middle;
+  }
+

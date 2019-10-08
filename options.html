@@ -1,0 +1,184 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+	<link rel ="stylesheet"
+	type = "text/css"
+	href="styletrial.css"/>
+</head>
+
+<body>
+
+
+
+
+
+<div id="optionpage">
+		<div id="options" class="grid-container">
+	
+				<div id = "option1" class="grid-item item1 cat" >General Knowledge</div>
+				<div id = "option2"class="grid-item item2 cat" >Popular Culture</div>
+				<div id = "option3"class="grid-item item3 cat" >Sports</div>
+				<div id = "option4"class="grid-item item4 cat" >Science</div>
+				<div id = "option5"class="grid-item item5 cat" >Video Games</div>
+				<div id = "option6"class="grid-item item6 cat" >Comics and Animations</div>
+	
+		</div>
+		<div id = "nextbutton" class="grid-container">
+
+		<div id="confirmchoice" class="grid-item confirm">START</div>
+
+
+
+
+		</div>
+</div>
+
+
+
+<div id="questioncontainer" class="grid-container">
+				<div id = "question1" class="grid-item item7">1</div>
+			</div>
+			<div id="answers" class = "grid-container">
+			  <div id = "answer0" class="grid-item item8 cat"></div>
+			  <div id = "answer1" class="grid-item item9 cat"></div>
+			  <div id = "answer2" class="grid-item item10 cat"></div>
+			  <div id = "answer3" class="grid-item item11 cat"></div>
+			 </div>
+
+<div class="grid-container" id="next">
+			<div  class="grid-item">
+			NEXT
+			</div>
+</div>
+
+<div id="scorekeeper" class="scores-container">
+<div id="score1"class="scores-grid-item"></div>
+<div id="score2"class="scores-grid-item"></div>
+<div id="score3"class="scores-grid-item"></div>
+<div id="score4"class="scores-grid-item"></div>
+<div id="score5"class="scores-grid-item"></div>
+<div id="score6"class="scores-grid-item"></div>
+<div id="score7"class="scores-grid-item"></div>
+<div id="score8"class="scores-grid-item"></div>
+<div id="score9"class="scores-grid-item"></div>
+<div id="score10"class="scores-grid-item"></div>
+
+
+
+</div>
+
+<div class="grid-container" id="scores">
+	<div class="grid-item" id="scoretext">
+	</div>
+	<div class="grid-item" id="nextround">
+	Next Round
+	</div>
+</div>
+
+
+</body>
+<script type="text/javascript" src="Script1.js"></script>
+<script type="text/javascript" src="domfunctions.js"></script>
+<script>
+
+
+class Options{
+	
+	constructor(){
+		
+		this.selected = []
+		
+		this.parentTag = document.querySelector('#options')
+		this.optionids = ["option1","option2","option3","option4","option5","option6"]
+		this.confirmchoices = document.querySelector("#confirmchoice")
+		this.selectCategory = this.selectCategory.bind(this)
+		this.Selection = this.Selection.bind(this)
+		this.options = {"General Knowledge":["9","22","24","27","23","28"],"Popular Culture":["10","12","14","13","26"],"Sports":["21"],"Science":["17","18","19","27","30"],"Video Games":["15","16"],"Comics and Animations":["31","32"]};
+		this.codes = []
+		this.nextround = document.querySelector('#nextround')
+		this.nextRoundButton=this.nextRoundButton.bind(this)
+	}
+	
+	selectCatFunc(){
+		
+		
+		this.parentTag.addEventListener("click",this.selectCategory,false)
+		
+	}
+
+	selectCategory(e){
+		
+					if(e.target!==e.currentTarget){
+					var clickedItem = e.target.id	
+					}
+					
+					if(!this.selected.includes(document.getElementById(clickedItem).innerHTML))
+					{this.selected.push(document.getElementById(clickedItem).innerHTML)
+					document.getElementById(clickedItem).style.background="#de921f"}
+					else{
+						let ind = this.selected.indexOf(document.getElementById(clickedItem).innerHTML)
+						this.selected.splice(ind,1)
+						document.getElementById(clickedItem).style.background="#C9ADA1"
+					}
+					console.log(this.selected)
+				}
+
+	confirmChoice(){
+		
+		this.confirmchoices.addEventListener("click",this.Selection,false)
+	}
+
+	optionsReset(){
+		this.optionids.forEach(option=>{document.getElementById(option).style.background="#C9ADA1"})
+		this.codes = []
+		return this.selected = []
+		
+	}
+	Selection(){
+		if(this.selected.length>0){
+			parseChoices()
+		}
+	}
+
+	nextRoundButton(){this.nextround.addEventListener("click",function(){hideNextRound(),showOptions()},false)}
+}
+
+let opts = new Options()
+opts.selectCatFunc()
+opts.confirmChoice()
+opts.nextRoundButton()
+
+function parseChoices(){
+/////this needs to return the codes that we can use in the game, based on the options selected.
+	//showQs()
+	console.log("finalchoices: "+opts.selected)
+	let result = opts.selected.map(function(item){return opts.options[item]})
+	for(var i = 0;i<result.length;i++){
+	opts.codes = opts.codes.concat(result[i])
+}
+	console.log(opts.codes)
+	getQuestion(opts.codes)
+	//showQs()
+	nextQ()
+	//setTimeout(function(){getQuestion(opts.codes)},1000)
+	//setTimeout(function(){getQuestion(opts.codes)},2000)
+	//setTimeout(function(){getQuestion(opts.codes)},3000)
+	//console.log(opts.codes[Math.floor(Math.random()*opts.codes.length)])
+	//callMe()
+}
+//////if question limit is reached, then this needs to change - if questions<10 - getQuestion else results screen.>>show results, reset game.
+
+function Run(){
+	let opts = new Options()
+opts.selectCatFunc()
+opts.confirmChoice()
+opts.nextRoundButton()
+}
+Run()
+
+
+</script>
+</html>
