@@ -3,8 +3,9 @@
 
 class Game{
 	constructor(token){
-		this.token = 'TOKEN'
+		this.token = '433ea9e8671f77a1c74292518fb318034af1a0020784a044343ad574fc371ec5'
 		this.round = 0
+		this.difficulty = ["&difficulty=easy","&difficulty=medium","&difficulty=hard"]
 		this.answered = 0
 		this.correct = 0
 		this.question = {}
@@ -103,7 +104,7 @@ function getToken(){
   
 			}).then(function(response){console.log(response['response_code'])
 										game.token=response['token']
-							
+										console.log(response['token'])
 										}).then(function(){getQuestion(opts.codes)})
 			, function(error) {
 			  console.error("Failed!", error);
@@ -119,7 +120,7 @@ function getQuestion(codes){
 			//const codes = ["32","24","11"]
 			const cat = codes[Math.floor(Math.random()*codes.length)]
 			//console.log("code chosen"+cat)
-			url = url+game.token+"&category="+cat
+			url = url+game.token+"&category="+cat+game.difficulty[game.round]
 			  return new Promise(function(resolve, reject) {
     
 				var req = new XMLHttpRequest();
