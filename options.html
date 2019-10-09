@@ -11,6 +11,10 @@
 
 <body>
 
+<div id = "current-round" class="grid-container">
+<div class="grid-item" id="show-round">Round 1: Easy</div>
+
+</div>
 
 
 
@@ -96,10 +100,11 @@ class Options{
 		this.confirmchoices = document.querySelector("#confirmchoice")
 		this.selectCategory = this.selectCategory.bind(this)
 		this.Selection = this.Selection.bind(this)
-		this.options = {"General Knowledge":["9","22","24","27","23","28"],"Popular Culture":["10","12","14","13","26"],"Sports":["21"],"Science":["17","18","19","27","30"],"Video Games":["15","16"],"Comics and Animations":["31","32"]};
+		this.options = {"General Knowledge":["9","22","24","27","23","28","20"],"Popular Culture":["10","11","12","14","13","26","25"],"Sports":["21"],"Science":["17","18","19","27","30"],"Video Games":["15","16"],"Comics and Animations":["29","31","32"]};
 		this.codes = []
 		this.nextround = document.querySelector('#nextround')
 		this.nextRoundButton=this.nextRoundButton.bind(this)
+		this.roundname = ["Round 1: Easy","Round 2: Medium","Round 3: Hard"]
 	}
 	
 	selectCatFunc(){
@@ -136,6 +141,7 @@ class Options{
 		this.codes = []
 		return this.selected = []
 		
+		
 	}
 	Selection(){
 		if(this.selected.length>0){
@@ -171,13 +177,6 @@ function parseChoices(){
 }
 //////if question limit is reached, then this needs to change - if questions<10 - getQuestion else results screen.>>show results, reset game.
 
-function Run(){
-	let opts = new Options()
-opts.selectCatFunc()
-opts.confirmChoice()
-opts.nextRoundButton()
-}
-Run()
 
 
 </script>

@@ -19,7 +19,12 @@ function showOptions(){
 	removeElement("answers")
 	document.getElementById("scorekeeper").style.display="none"
 	restoreElement("optionpage")
+	document.getElementById("show-round").innerHTML = opts.roundname[game.round]
+	
+
 }
+
+
 
 function status(){
 	console.log("Question: "+game.answered)
