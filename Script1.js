@@ -37,12 +37,12 @@ class Game{
 	answerListener(){
 		document.getElementById("answers").addEventListener("click",this.clickedAnswer,false)
 	}
-	another(){
+	removeanswerListener(){
 		//this is to stop double submission of answers
 		document.getElementById("answers").removeEventListener("click",this.clickedAnswer,false)
 	}
 	clickedAnswer(e){
-		this.another()
+		this.removeanswerListener()
 		if(e.target!==e.currentTarget){
 			var clickedItem = e.target.id
 			//console.log("Clicked "+clickedItem)
